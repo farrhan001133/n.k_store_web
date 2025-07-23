@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Analytics</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f7fa;
+      padding: 30px;
+    }
+
+    .header {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2f3542;
+      margin-bottom: 30px;
+    }
+
+    .cards {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      flex: 1;
+      min-width: 220px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .charts {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .chart-container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      flex: 1;
+      min-width: 300px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    h3 {
+      margin-bottom: 15px;
+      color: #2f3542;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">📊 N.K Analytics Dashboard</div>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Total Products</h3>
+      <p id="productCount">0</p>
+    </div>
+    <div class="card">
+      <h3>Total Orders</h3>
+      <p id="orderCount">0</p>
+    </div>
+    <div class="card">
+      <h3>Total Revenue</h3>
+      <p>₹ 0</p>
+    </div>
+  </div>
+
+  <div class="charts">
+    <div class="chart-container">
+      <h3>Bar Chart - Orders & Products</h3>
+      <canvas id="barChart"></canvas>
+    </div>
+
+    <div class="chart-container">
+      <h3>Donut Chart - Share</h3>
+      <canvas id="donutChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    let totalProducts = 0;
+    let totalOrders = 0;
+
+    for (let key in localStorage) {
+      if (key.startsWith("product-")) totalProducts++;
+      if (key.startsWith("order-")) totalOrders++;
+    }
+
+    // Update card numbers
+    document.getElementById('productCount').textContent = totalProducts;
+    document.getElementById('orderCount').textContent = totalOrders;
+
+    // Bar Chart
+    const ctx1 = document.getElementById('barChart').getContext('2d');
+    new Chart(ctx1, {
+      type: 'bar',
+      data: {
+        labels: ['Products', 'Orders'],
+        datasets: [{
+          label: 'Count',
+          data: [totalProducts, totalOrders],
+          backgroundColor: ['#1e90ff', '#2ed573']
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+
+    // Donut Chart
+    const ctx2 = document.getElementById('donutChart').getContext('2d');
+    new Chart(ctx2, {
+      type: 'doughnut',
+      data: {
+        labels: ['Products', 'Orders'],
+        datasets: [{
+          label: 'Share',
+          data: [totalProducts, totalOrders],
+          backgroundColor: ['#1e90ff', '#ffa502']
+        }]
+      },
+      options: {
+        responsive: true,
+        cutout: '60%'
+      }
+    });
+  </script>
+
+</body>
+</html>

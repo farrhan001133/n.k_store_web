@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>N.K RO & CCTV Sales Corporation</title>
+  <link rel="stylesheet" href="style.css" />
+   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+
+  <!-- AOS Library for Scroll Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+ 
+  <!-- Font Awesome for WhatsApp icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="logo.jpg.jpg" alt="Logo">
+      <h1>N.K RO & CCTV  Store</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about-us">About</a></li>
+        <li><a href="#services">Products</a></li>
+        <li><a href="#contact-us">Contact</a></li>
+        <li><a href="#feedback-us">Review</a></li>
+        <li><a href="#owner-us">Owner</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+    <section id="home" class="hero">
+    <div class="hero-content" data-aos="fade-up">
+      <h2>Luxury Water Purification & CCTV Solutions</h2>
+      <p>Trusted Quality | Modern Technology | Best Support</p>
+      <a href="#order-us" class="btn">Get in Touch</a>
+    </div>
+  </section>
+  
+    <nav class="nav-links">
+        <div onclick="location.href='loginpage.html'">Home 🏠</div>
+    </nav>
+    
+
+  <section id="about-us" class="about-us"></section>
+  <!-- ABOUT US -->
+<section class="about-us">
+  <div class="container">
+    <h2>About Us</h2>
+    <p>Welcome to <strong>N.K RO & CCTV Sales Corporation</strong></p>
+    <ul>
+      <li>Wide range of RO water purifiers for homes, offices, and businesses.</li>
+      <li>Modern CCTV camera systems for full security coverage.</li>
+      <li>Professional installation, maintenance & after-sales support.</li>
+    </ul>
+    <p><strong>Our Vision:</strong> To be the most reliable brand for RO systems and security solutions, bringing <strong>clean water and peace of mind</strong> to every household.</p>
+    <p><strong>Why Choose Us:</strong></p>
+    <ul>
+      <li>Trusted Products from Top Brands</li>
+      <li>Professional Installation & Service</li>
+      <li>Affordable Prices & Customized Solutions</li>
+      <li>Quick Response & Friendly Support</li>
+    </ul>
+    <p>Contact us today and secure your home & family with <strong>N.K RO & CCTV Sales Corporation</strong> – Safe Water. Safe Life.</p>
+  </div>
+</section>
+
+<!-- Products Section -->
+  <section id="services" class="services" data-aos="fade-up">
+    <h2>Our Products</h2>
+    <div class="service-list">
+      <div class="service-item" onclick="openModal('Livpure RO Water Purifier', 'livpure-allura-37995899125913.webp', 'High quality RO purifier for home & office.')"
+      data-aos="flip-up">
+        <img src="livpure-allura-37995899125913.webp" alt="Livpure Purifier">
+        <h3>Livpure RO Water Purifier</h3>
+        <p>Clean, safe, and pure drinking water for your family.</p>
+      </div>
+
+      <div class="service-item" onclick="openModal('CCTV Camera', 'pawel-czerwinski-zBTYRFCeaS0-unsplash.jpg', 'HD CCTV Camera with night vision & remote access.')"
+      data-aos="flip-up">
+        <img src="pawel-czerwinski-zBTYRFCeaS0-unsplash.jpg" alt="CCTV">
+        <h3>CCTV Camera</h3>
+        <p>High-definition surveillance with smart features.</p>
+      </div>
+
+      <!-- Add more products same way -->
+      <div class="service-item" onclick="openModal('Nexus RO Purifier', 'nexus-aquafresh.jpg', 'High Quality RO purifier for home and office.')"
+      data-aos="flip-up">
+        <img src="nexus-aquafresh.jpg" alt="Nexus RO Purifier">
+        <h3>Nexus RO Water Purifier</h3>
+        <p>Clean, safe, and pure drinking water for your family.</p>
+      </div>
+
+      <div class="service-item" onclick="openModal('Aqua Fresh RO', 'dr ro.webp', 'High Quality RO purifier for home and office.')"
+      data-aos="flip-up">
+        <img src="dr ro.webp" alt="Aqua Fresh RO">
+        <h3>Aqua Fresh RO Water Purifier</h3>
+        <p>Clean, safe, and pure drinking water for your family.</p>
+      </div>
+
+      <div class="service-item"onclick="openModal('CP PLUS Camera', 'mehmet-keskin-7_vedeLNRG4-unsplash.jpg', 'HD CCTV Camera with night vision & remote access.')"
+      data-aos="flip-up">
+        <img src="mehmet-keskin-7_vedeLNRG4-unsplash.jpg" alt="CP PLUS CCTV">
+        <h3>CP PLUS Camera</h3>
+        <p>High-definition surveillance with smart features.</p>
+      </div>
+
+      <div class="service-item"onclick="openModal('4 Camera Setup', 'WhatsApp-Image-2022-12-20-at-3.42.53-PM-768x768.jpeg', 'HD CCTV Camera with night vision & remote access.')"
+      data-aos="flip-up">
+        <img src="WhatsApp-Image-2022-12-20-at-3.42.53-PM-768x768.jpeg" alt="CCTV Setup">
+        <h3>4 Camera Setup</h3>
+        <p>Include The services is DVR, 4-camera, Memory, Wire, Cable, All Type installation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img id="modalImage" src="" alt="">
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+      <a href="#" id="whatsappBtn" target="_blank" class="btn whatsapp-btn">
+        <i class="fab fa-whatsapp"></i> Enquire on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <section class="owner-us" id="owner-us"></section>
+<section class="team" data-aos="fade-up">
+  <h2>Meet Our Owner</h2>
+  <div class="team-container">
+    <div class="team-member" onclick="openModal('Tanveer Khan', 'IMG_4256.jpeg', 'CEO & Technical Director')">
+      <img src="IMG_4256.jpeg" alt="Tanveer Khan">
+      <h3>Tanveer Khan</h3>
+      <p>CEO & Technical Director</p>
+    </div>
+    <div class="team-member" onclick="openModal('Nawab Khan', 'IMG_0031.jpeg', 'Chairman & & Security Consultant<')">
+      <img src="IMG_0031.jpeg" alt="Nawab Khan">
+      <h3>Nawab Khan</h3>
+      <p>Chairman & & Security Consultant</p>
+    </div>
+  </div>
+</section>
+
+<section id="team-us" class="team-us"></section>
+<section class="gallery" data-aos="fade-up">
+  <h2>Our Installation Gallery</h2>
+  <div class="gallery-row">
+    <div class="gallery-item" onclick="openModal('Rakesh Kumar', 'technicion 1.jpg', 'Expert And Talk to Hindi & English.')">
+      <img src="technicion 1.jpg" alt="Installation 1">
+    </div>
+    <div class="gallery-item" onclick="openModal('Rashid Khan', 'images.jfif', 'Expert And Talk to Hindi & English.')">
+      <img src="images.jfif" alt="Installation 2">
+    </div>
+    <div class="gallery-item" onclick="openModal('Kamran', 'technicion3.webp', 'Expert And Talk to Hindi & English.')">
+      <img src="technicion3.webp" alt="Installation 3">
+    </div>
+  </div>
+</section>
+
+<section id="contact-us" class="contact-us"></section>
+  <!-- CONTACT US -->
+<section class="contact-us">
+  <div class="container">
+    <h2>Contact Us</h2>
+    <p>We are always ready to help you. Get in touch with us for any enquiry or support.</p>
+
+    <div class="contact-details">
+      <div class="contact-item">
+        <h3>Address</h3>
+        <p>A-21, Irahi Masjid Boring Road Jhotwara, Jaipur, Rajasthan</p>
+      </div>
+      <div class="contact-item">
+        <h3>Phone</h3>
+        <p><a href="tel:+911234567890">+91 7877607030</a></p>
+      </div>
+      <div class="contact-item">
+        <h3>Email</h3>
+        <p><a href="mailto:info@nkroandcctv.com">nktanveerro@cctvstore.com</a></p>
+      </div>
+      <div class="contact-item">
+        <h3>WhatsApp</h3>
+        <p><a href="https://wa.me/917877607030" target="_blank">Chat on WhatsApp</a></p>
+      </div>
+    </div>
+
+ <section id="feedback-us" class="feedback-us"></section>
+    <!--feedback-us-->
+    <section class="testimonials">
+  <h2>Customer Feedback</h2>
+  <div class="testimonial-box">
+  <!-- Review 1 -->
+  <div style="margin-bottom: 15px; border-left: 4px solid #27ae60; padding-left: 10px;">
+    <p style="margin: 0;"><strong>“Installed CCTV at my shop, excellent quality and service.”</strong></p>
+    <p style="margin: 5px 0; font-size: 13px; color: #555;">– Ramesh Gupta, Chandpole Bazar</p>
+    <p style="color: #f1c40f; margin: 0; font-size: 18px;">★★★★</p>
+  </div>
+
+  <!-- Review 2 -->
+  <div style="margin-bottom: 15px; border-left: 4px solid #3498db; padding-left: 10px;">
+    <p style="margin: 0;"><strong>“RO water is clean and tastes fresh. Timely delivery. Recommended!”</strong></p>
+    <p style="margin: 5px 0; font-size: 13px; color: #555;">– Pooja Verma, Jhotwara</p>
+    <p style="color: #f1c40f; margin: 0; font-size: 18px;">★★★★★</p>
+  </div>
+
+  <!-- Review 3 -->
+  <div style="margin-bottom: 15px; border-left: 4px solid #e67e22; padding-left: 10px;">
+    <p style="margin: 0;"><strong>“Best prices and fast service. Good experience overall.”</strong></p>
+    <p style="margin: 5px 0; font-size: 13px; color: #555;">– Faizan Khan, Mansarovar</p>
+    <p style="color: #f1c40f; margin: 0; font-size: 18px;">★★★★</p>
+  </div>
+  <!-- Review 4 -->
+  <div style="margin-bottom: 15px; border-left: 4px solid #9b59b6; padding-left: 10px;">
+    <p style="margin: 0; font-style: italic;"><strong>“Very reasonable pricing compared to others. Great customer support.”</strong></p>
+    <p style="margin: 5px 0; font-size: 13px; color: #555;">– Hanif Khan, Jhotwara</p>
+   <p style="color: #f1c40f; margin: 0; font-size: 18px;">★★★★</p>
+  </div>
+
+  <!-- Review 5 -->
+  <div style="margin-bottom: 15px; border-left: 4px solid #2ecc71; padding-left: 10px;">
+    <p style="margin: 0; font-style: italic;"><strong>“Aqua Fresh RO is working perfectly. Good build quality and look.”</strong></p>
+   <p style="margin: 5px 0; font-size: 13px; color: #555;">– Nitika Bansal, Kalwar</p>
+    <p style="color: #f1c40f; margin: 0; font-size: 18px;">★★★★</p>
+  </div>
+
+  <!-- Review 6 -->
+  <div style="margin-bottom: 0; border-left: 4px solid #f39c12; padding-left: 10px;">
+    <p style="margin: 0; font-style: italic;"><strong>“Delivery within 24 hours. They also helped in mobile viewing setup.”</strong></p>
+   <p style="margin: 5px 0; font-size: 13px; color: #555;">– MOhammed Abid, Jalupura</p>
+    <p style="color: #f1c40f; margin: 0; font-size: 18px;">★★★★</p>
+  </div>
+</div>
+    </section>
+  </div>
+</section>
+
+
+ <!-- Video CTA -->
+        <p style="text-align: center; margin: 30px 0;">
+          <a href="CCTV Systems for Industrial Use - Featuring PELCO Products (online-video-cutter.com).mp4" style="background: #f1c40f; color: black; text-decoration: none; padding: 12px 25px; border-radius: 5px;">
+            ▶️ Watch CCTV Sample Video 1
+          </a>
+        </p>
+
+        <p style="text-align: center; margin: 30px 0;">
+          <a href="WaterPurifiers (online-video-cutter.com).mp4" style="background: #f1c40f; color: black; text-decoration: none; padding: 12px 25px; border-radius: 5px;">
+            ▶️ Watch RO Purifier Sample Video 2
+          </a>
+        </p>
+
+<section class="map">
+  <h2>Our Location</h2>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56588.136050118726!2d75.7210606!3d26.9542264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db5a5c22e9737%3A0x2b1bc0d77b8a19d6!2sBismilla%20Colony%2C%20Jagannath%20Puri%2C%20Udyog%20Nagar%2C%20Jhotwara%2C%20Jaipur%2C%20Rajasthan%20302012!5e0!3m2!1sen!2sin!4v1721392433169!5m2!1sen!2sin"
+    width="50%"
+    height="150"
+    style="border:0; border-radius: 20px;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</section>
+
+<!-- ... [ALL EXISTING CONTENT ABOVE UNCHANGED] ... -->
+
+  <section id="order-us" class="order-us"></section>
+  <h2>Place Your Order</h2>
+  <form id="orderForm">
+    <input type="text" id="name" placeholder="Your Name" required />
+    <input type="tel" id="phone" placeholder="Phone Number" required />
+    <select id="product" required>
+      <option value="">-- Select Product --</option>
+      <option value="Livpure RO">Livpure RO</option>
+      <option value="Nexus RO">Nexus RO</option>
+      <option value="CCTV 4 Camera Setup">CCTV 4 Camera Setup</option>
+      <option value="Aqua Fresh RO">Aqua Fresh RO</option>
+    </select>
+    <input type="text" id="address" placeholder="Full Address" required />
+    <button type="submit">Submit Order</button>
+  </form>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyBW6KCGnhSdONlm0vSkHM_MoRf_v1jJCfw",
+      authDomain: "nk-web-store.firebaseapp.com",
+      projectId: "nk-web-store",
+      storageBucket: "nk-web-store.firebasestorage.app",
+      messagingSenderId: "1079417655313",
+      appId: "1:1079417655313:web:e2be2de6999b7a7a3ce1b0",
+      measurementId: "G-44PDVB17J0"
+    };
+    
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database().ref("order/orders");
+
+    document.getElementById("orderForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const product = document.getElementById("product").value;
+      const address = document.getElementById("address").value.trim();
+
+      const newOrder = {
+        name,
+        phone,
+        product,
+        address,
+        date: new Date().toLocaleDateString()
+      };
+
+      db.push(newOrder)
+        .then(() => {
+          alert("Order submitted successfully!");
+          document.getElementById("orderForm").reset();
+        })
+        .catch(error => alert("Error: " + error));
+    });
+  </script>
+
+  <script src="script.js"></script>
+
+  <section class="faq">
+  <h2>FAQs</h2>
+  <details>
+    <summary>RO installation charge kitna hai?</summary>
+    <p>₹250 only within Jaipur city.</p>
+  </details>
+  <details>
+    <summary>CCTV warranty kya hai?</summary>
+    <p>1 Year full replacement warranty.</p>
+  </details>
+</section>
+ 
+<!-- Pop-up viewer -->
+<div id="popup" onclick="this.style.display='none'">
+  <img id="popup-img" src="">
+</div>
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+</body>
+<a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="50px">
+</a>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to top right, #301934, #b983ff);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .login-wrapper {
+      width: 400px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(to right, #6a1b9a, #ab47bc);
+      color: white;
+      padding: 30px 20px 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 24px;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+
+    .header p {
+      font-size: 12px;
+      margin: 10px 0;
+      opacity: 0.8;
+    }
+
+    form {
+      padding: 20px;
+      background: #fff;
+    }
+
+    form h2 {
+      text-align: center;
+      color: #6a1b9a;
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px 40px 12px 40px;
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      outline: none;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .input-group i {
+      position: absolute;
+      top: 12px;
+      left: 15px;
+      color: #6a1b9a;
+    }
+
+    .input-group input:focus {
+      border-color: #ab47bc;
+    }
+
+    .extras {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .extras input {
+      margin-right: 5px;
+    }
+
+    .extras a {
+      color: #6a1b9a;
+      text-decoration: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #6a1b9a, #ab47bc);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #5e1383, #a139af);
+    }
+  </style>
+  <!-- Icon CDN -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <div class="login-wrapper">
+    <div class="header">
+      <h1>Welcome To The N.K Store</h1>
+      <p>Login to continue your journey</p>
+    </div>
+   
+    <!-- ✅ Add id="loginForm" -->
+    <form id="loginForm">
+      <h2>USER LOGIN</h2>
+      <div class="input-group">
+        <i class="fas fa-user"></i>
+        <!-- ✅ Add id="email" -->
+        <input type="email" id="email" placeholder="Email" required>
+      </div>
+      <div class="input-group">
+        <i class="fas fa-lock"></i>
+        <!-- ✅ Add id="password" -->
+        <input type="password" id="password" placeholder="Password" required>
+      </div>
+      <div class="extras">
+        <label><input type="checkbox"> Remember</label>
+        <a href="#">Forgot password?</a>
+      </div>
+      <button type="submit">LOGIN</button>
+    </form>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    const firebaseConfig = {
+   apiKey: "AIzaSyBW6KCGnhSdONlm0vSkHM_MoRf_v1jJCfw",
+  authDomain: "nk-web-store.firebaseapp.com",
+  projectId: "nk-web-store",
+  storageBucket: "nk-web-store.firebasestorage.app",
+  messagingSenderId: "1079417655313",
+  appId: "1:1079417655313:web:e2be2de6999b7a7a3ce1b0",
+  measurementId: "G-44PDVB17J0"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // ✅ Now this will work
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          alert("✅ Login successful!");
+          window.location.href = "deshboad.html"; // Redirect
+        })
+        .catch((error) => {
+          alert("❌ Login failed: " + error.message);
+        });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Add Product - Admin Panel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background:linear-gradient(to right, #3f0d64, #9d60ff);
+      display: flex;
+      justify-content: center;
+      padding: 50px;
+    }
+    form {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 1000px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 30px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #successMessage {
+      color: green;
+      text-align: center;
+      margin-top: 10px;
+    }
+    .back-btn a {
+  text-decoration: none;
+  background-color:linear-gradient(to right, #3f0d64, #9d60ff);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 9px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.back-btn a:hover {
+  background-color: #3f0d64;
+}
+  </style>
+</head>
+<body>
+   <div class="back-btn">
+  <a href="deshboad.html">⬅ Back to Dashboard</a>
+</div>
+
+  <form id="addProductForm">
+    <h2>🛒 Add Product</h2>
+    <input type="text" id="productName" placeholder="Product Name" required />
+    <input type="text" id="productPrice" placeholder="Price (₹)" required />
+    <textarea id="productDesc" placeholder="Description" required></textarea>
+    <input type="url" id="productImage" placeholder="Image URL" required />
+    <button type="submit">Add Product</button>
+    <div id="successMessage"></div>
+  </form>
+
+  <script>
+    document.getElementById("addProductForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("productName").value.trim();
+      const price = document.getElementById("productPrice").value.trim();
+      const desc = document.getElementById("productDesc").value.trim();
+      const image = document.getElementById("productImage").value.trim();
+
+      if (!name || !price || !desc || !image) {
+        alert("❌ Please fill in all fields.");
+        return;
+      }
+
+      const product = { name, price, desc, image };
+      localStorage.setItem("product-" + Date.now(), JSON.stringify(product));
+
+      document.getElementById("successMessage").innerText = "✅ Product Added!";
+      document.getElementById("addProductForm").reset();
+    });
+  </script>
+</body>
+</html>

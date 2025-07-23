@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Orders - NK Web</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #3f0d64, #9d60ff);
+      padding: 30px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #222;
+      margin-bottom: 30px;
+      font-size: 28px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 14px 16px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #222;
+      color: white;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      th {
+        display: none;
+      }
+
+      td {
+        position: relative;
+        padding-left: 50%;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 16px;
+        top: 12px;
+        font-weight: bold;
+        color: #555;
+      }
+    }
+    
+    .back-btn {
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  z-index: 100;
+}
+
+.back-btn a {
+  text-decoration: none;
+  background-color:linear-gradient(to right, #3f0d64, #9d60ff);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 9px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.back-btn a:hover {
+  background-color: #3f0d64;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="back-btn">
+  <a href="deshboad.html">⬅ Back to Dashboard</a>
+</div>
+
+  <div class="container">
+    <h1>📦 All Customer Orders</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Product</th>
+          <th>Address</th>
+          <th>Date</th>
+          <th>safe & remove</th>
+          
+        </tr>
+      </thead>
+      <tbody id="ordersBody">
+        <!-- Firebase Data Will Load Here -->
+      </tbody>
+    </table>
+  </div>
+ 
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBW6KCGnhSdONlm0vSkHM_MoRf_v1jJCfw",
+      authDomain: "nk-web-store.firebaseapp.com",
+      projectId: "nk-web-store",
+      storageBucket: "nk-web-store.firebasestorage.app",
+      messagingSenderId: "1079417655313",
+      appId: "1:1079417655313:web:e2be2de6999b7a7a3ce1b0",
+      measurementId: "G-44PDVB17J0"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+    const ordersRef = db.ref("order/orders");
+
+    ordersRef.on("value", (snapshot) => {
+      const data = snapshot.val();
+      const tableBody = document.getElementById("ordersBody");
+      tableBody.innerHTML = "";
+
+      for (let key in data) {
+        const order = data[key];
+        const row = `
+          <tr>
+            <td data-label="Name">${order.name}</td>
+            <td data-label="Phone">${order.phone}</td>
+            <td data-label="Product">${order.product}</td>
+            <td data-label="Address">${order.address}</td>
+            <td data-label="Date">${order.date}</td>
+            <td data-label="Delete">
+            <button onclick="deleteOrder('${key}')" style="color:white;background:red;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;">
+          🗑 Delete
+        </button>
+        </td>
+          </tr>
+        `;
+        tableBody.innerHTML += row;
+      }
+    });
+      window.logout = function () {
+      signOut(auth).then(() => {
+        alert("Logged out!");
+         window.location.replace("desboad.html");
+      }).catch((error) => {
+        alert("Logout error: " + error.message);
+      });
+    };
+
+
+
+  function deleteOrder(orderId) {
+    if (confirm("Are you sure you want to delete this order?")) {
+      const deleteRef = firebase.database().ref("order/orders/" + orderId);
+      deleteRef.remove()
+        .then(() => {
+          alert("✅ Order deleted successfully!");
+        })
+        .catch((error) => {
+          console.error("Error deleting order: ", error);
+          alert("❌ Failed to delete order.");
+        });
+    }
+  }
+
+
+
+    loadCounts();
+  </script>
+</body>
+</html>
